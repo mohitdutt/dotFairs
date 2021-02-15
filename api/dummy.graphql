@@ -1,0 +1,175 @@
+# create event
+mutation {
+  createEvents(eventName: "eventName", 
+    date: "2020-11-01T14:39:07.313Z",
+    fee:90,
+    contactInfo: {
+        phoneNumber: 989, 
+        web:"abc.com", 
+        email: "mohitdutt@gmail.com"
+    }, 
+    geometry:{
+        lat:1, 
+        lan:2
+    },
+    timeFrom: 12,
+    timeTo: 5,
+    numberOfAttendees: 32,
+    host: "abc",
+    
+    description: "qwerty qwerty",
+    category:  ["abc","def"],
+    industry: ["xyz", "zew"],
+    deactivate: false
+  ){
+    eventName
+    date
+    fee
+    contactInfo{
+      phoneNumber
+      web
+      email
+    }
+    geometry{
+      lat
+      lan
+    }
+    timeFrom
+    timeTo
+    numberOfAttendees
+    host
+    description
+    category
+    industry
+    deactivate
+  }
+}
+
+# get all events
+{
+  getAllevents{
+    eventName
+    date
+    fee
+    contactInfo{
+      phoneNumber
+      web
+      email
+    }
+    geometry{
+      lat
+      lan
+    }
+    timeFrom
+    timeTo
+    numberOfAttendees
+    host
+    description
+    category
+    industry
+    deactivate
+  }
+}
+
+# get events by id
+
+{
+  getEvent(id:"5f9f184f3ec693b6a859d748"){
+    eventName
+    date
+    fee
+    contactInfo{
+      phoneNumber
+      web
+      email
+    }
+    geometry{
+      lat
+      lan
+    }
+    timeFrom
+    timeTo
+    numberOfAttendees
+    host
+    description
+    category
+    industry
+    deactivate
+  }
+}
+
+# update event
+
+mutation{
+  updateEvent(id:"5f9f184f3ec693b6a859d748"){
+    fee
+    eventName
+  }
+}
+
+# delete events
+
+mutation{
+  deleteEvent(id:"5f9f184f3ec693b6a859d748"){
+    fee
+    eventName
+  }
+}
+
+# deactivate events
+
+mutation{
+  deActivateEvents(Ids:["5f9f121a9f5bd1765412967d", "5f9f9b961c2c69dec442f7ef"]){
+    industry
+  }
+}
+
+# search events
+
+{
+  searchEvents(host: "abc") {
+    eventName
+    date
+    fee
+    timeFrom
+    timeTo
+    numberOfAttendees
+    host
+    description
+    deactivates
+  }
+  
+}
+
+{
+  searchOREvents(eventName: "event2", fee:50){
+    eventName
+    date
+    fee
+    contactInfo{
+      phoneNumber
+      web
+      email
+    }
+    geometry{
+      lat
+      lan
+    }
+    timeFrom
+    timeTo
+    numberOfAttendees
+    host
+    description
+    category
+    industry
+    deactivate
+  }
+}
+
+# filter on the basis of date
+
+{
+  filterOnDate(from: "2020-11-01T00:00:00.000Z", to: "2020-11-09T00:00:00.000Z"){
+    eventName
+  }
+}
